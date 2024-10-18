@@ -7,7 +7,7 @@ export default function TestePagina() {
   }
   return (
     <Pagina titulo="Página 2" subtitulo="Essa é a segunda pagina">
-      <button onClick={executar} className="bg-blue-500 p-2 rounded-md">
+      <button onClick={executar} className="botao">
         Teste
       </button>
     </Pagina>

@@ -3,8 +3,11 @@ import {
   IconCalculatorFilled,
   IconCalculatorOff,
   IconCode,
+  IconForms,
   IconHome,
   IconHospital,
+  IconNumber,
+  IconNumbers,
   IconRulerMeasure,
   IconScale,
   IconTableShortcut,
@@ -29,10 +32,29 @@ export default function Menu() {
       <span className=" text-sm text-zinc-500 self-start pl-3 pt-1">
         Estado
       </span>
+
+      <MenuItem
+        icone={<IconNumbers />}
+        label="Contador"
+        url="/estado/contador"
+      />
+
       <MenuItem
         icone={<IconCode />}
-        label="Componente sem estado"
-        url="/componente/basico"
+        label="Componente com estado"
+        url="/estado/com"
+      />
+
+      <MenuItem
+        icone={<IconForms />}
+        label="Campo de texto"
+        url="/estado/campoTexto"
+      />
+
+      <MenuItem
+        icone={<IconCalculator />}
+        label="Calculadora"
+        url="/estado/calculadora"
       />
 
       <span className=" text-sm text-zinc-500 self-start pl-3 pt-1">
