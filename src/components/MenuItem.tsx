@@ -13,7 +13,8 @@ export default function MenuItem(props: MenuItem) {
       className={`
         flex items-center gap-4 
         text-base w-full px-4 py-2 rounded-md"
-        hover:bg-zinc-900
+        hover:bg-zinc-300
+        hover:rounded-lg
      `}
     >
       <span> {props.icone}</span>

@@ -18,7 +18,7 @@ export default function PaginaCampoTexto() {
     <Pagina titulo="Campo de Texto" subtitulo="Capitulo Estado">
       <div className="flex items-center gap-5">
         <input
-          className="campo"
+          className="input"
           type="text"
           value={valor}
           onChange={alterarValor}

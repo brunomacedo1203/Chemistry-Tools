@@ -7,7 +7,7 @@ export default function Conteudo(props: Conteudo) {
     <div
       className={`
          flex p-4 items-start flex-1 
-         bg-zinc-900
+         bg-zinc-100
          text-3xl  h-screen`}
     >
       {props.children}
