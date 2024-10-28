@@ -42,8 +42,8 @@ body {
   @apply focus:ring-2 focus:ring-black focus:ring-opacity-30;
 }
 
-.btn-molarMass {
-  @apply bg-green-700 shadow-xl rounded-lg px-4 py-2 
+.btn-calculate {
+  @apply bg-green-700 shadow-xl rounded-lg 
   hover:bg-opacity-80 transition-all duration-200 
   hover:bg-green-700 hover:shadow-[10px_10px_20px_rgba(0,0,0,0.25)];
 }

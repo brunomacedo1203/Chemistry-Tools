@@ -1,4 +1,4 @@
-const periodicTable = [
+const elementsData = [
   { symbol: "H", name: "Hydrogen", atomicNumber: 1, molarMass: 1.008 },
   { symbol: "He", name: "Helium", atomicNumber: 2, molarMass: 4.0026 },
   { symbol: "Li", name: "Lithium", atomicNumber: 3, molarMass: 6.94 },
@@ -118,4 +118,4 @@ const periodicTable = [
   { symbol: "Ts", name: "Tennessine", atomicNumber: 117, molarMass: 294 },
   { symbol: "Og", name: "Oganesson", atomicNumber: 118, molarMass: 294 },
 ];
-export default periodicTable;
+export default elementsData;

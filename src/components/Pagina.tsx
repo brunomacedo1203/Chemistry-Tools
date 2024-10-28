@@ -15,6 +15,7 @@ export default function Pagina(props: any) {
           className="h-16 bg-zinc-100"
         />
         <Conteudo>{props.children}</Conteudo>
+
         <Rodape
           textoEsquerda="Email Contact"
           textoDireita={`Developed in ${ano}`}

@@ -1,6 +1,6 @@
 interface Cabecalho {
   titulo: string;
-  subtitulo: string;
+  subtitulo?: string;
   className?: string;
 }
 export default function Cabecalho(props: Cabecalho) {

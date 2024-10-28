@@ -1,16 +1,12 @@
 import {
   IconCalculator,
-  IconCalculatorFilled,
-  IconCalculatorOff,
   IconCode,
   IconForms,
-  IconHome,
   IconHospital,
-  IconNumber,
   IconNumbers,
+  IconPlayCardA,
   IconRulerMeasure,
   IconScale,
-  IconTableShortcut,
 } from "@tabler/icons-react";
 import MenuItem from "./MenuItem";
 
@@ -27,7 +23,7 @@ export default function Menu() {
       <MenuItem
         icone={<IconHospital />}
         label="Periodic Table"
-        url="/fundamentos/pagina"
+        url="/PeriodicTable"
       />
 
       <span className=" text-sm text-zinc-500 self-start pl-3 pt-1">
@@ -60,31 +56,41 @@ export default function Menu() {
       />
 
       <span className=" text-sm text-zinc-500 self-start pl-3 pt-1">
+        Flash Cards
+      </span>
+
+      <MenuItem
+        icone={<IconPlayCardA />}
+        label="Flashcards"
+        url="/flashcards"
+      />
+
+      <span className=" text-sm text-zinc-500 self-start pl-3 pt-1">
         Exercícios do curso
       </span>
 
       <MenuItem
         icone={<IconNumbers />}
         label="Contador"
-        url="/estado/contador"
+        url="/estado_exercicios/contador"
       />
 
       <MenuItem
         icone={<IconCode />}
         label="Componente com estado"
-        url="/estado/com"
+        url="/estado_exercicios/com"
       />
 
       <MenuItem
         icone={<IconForms />}
         label="Campo de texto"
-        url="/estado/campoTexto"
+        url="/estado_exercicios/campoTexto"
       />
 
       <MenuItem
         icone={<IconCalculator />}
         label="Calculadora"
-        url="/estado/calculadora"
+        url="/estado_exercicios/calculadora"
       />
     </div>
   );
