@@ -4,10 +4,10 @@ import elementsData from "@/app/data/elementsData";
 export default function PeriodicTableCards() {
   return (
     <div
-      className="bg-red-400 grid h-screen gap-1"
+      className=" grid gap-1 p-5"
       style={{
-        gridTemplateColumns: "repeat(18, 1fr)",
-        gridTemplateRows: "repeat(10, 80px)",
+        gridTemplateColumns: "repeat(18, minmax(50px, 1fr))",
+        gridTemplateRows: "repeat(10, minmax(50px, 1fr))",
       }}
     >
       {elementsData.map((e) => (
