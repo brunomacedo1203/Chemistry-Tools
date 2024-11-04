@@ -4,7 +4,7 @@ import elementsData from "@/app/data/elementsData";
 export default function PeriodicTableCards() {
   return (
     <div
-      className=" grid gap-1 p-5"
+      className=" bg-red-300 grid gap-1 p-5"
       style={{
         gridTemplateColumns: "repeat(18, minmax(50px, 1fr))",
         gridTemplateRows: "repeat(10, minmax(50px, 1fr))",

@@ -1,59 +1,201 @@
 import Pagina from "@/components/Pagina";
-import { useState } from "react";
-import InputFormula from "@/components/InputFormula";
+import { useState, useRef } from "react";
 import elementsData from "@/app/data/elementsData";
 
+interface ElementData {
+  symbol: string;
+  molarMass: number;
+}
+
+const SubscriptInput = ({
+  onChange,
+  onEnterPress,
+}: {
+  onChange: (val: string) => void;
+  onEnterPress: () => void;
+}) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const formatWithSub = (str: string) => {
+    return str.replace(/(\d+)/g, "<sub>$1</sub>");
+  };
+
+  const handleInput = (e: React.FormEvent<HTMLDivElement>) => {
+    const rawText = e.currentTarget.textContent || "";
+    onChange(rawText);
+
+    const formattedText = formatWithSub(rawText);
+
+    if (contentRef.current && contentRef.current.innerHTML !== formattedText) {
+      contentRef.current.innerHTML = formattedText;
+      setCaretToEnd(contentRef.current);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onEnterPress();
+    }
+  };
+
+  const setCaretToEnd = (el: HTMLDivElement) => {
+    const range = document.createRange();
+    const sel = window.getSelection();
+    if (sel) {
+      range.selectNodeContents(el);
+      range.collapse(false);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  };
+
+  return (
+    <div
+      ref={contentRef}
+      contentEditable
+      suppressContentEditableWarning
+      onInput={handleInput}
+      onKeyDown={handleKeyDown}
+      className="border border-gray-300 p-2 min-w-[200px] font-sans text-black"
+      spellCheck="false"
+    />
+  );
+};
+
 export default function MolarMassCalculator() {
-  const [formula, setFormula] = useState("");
+  const [formula, setFormula] = useState<string>("");
   const [molarMass, setMolarMass] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const calculateMolarMass = () => {
     let totalMolarMass = 0;
-    const formattedFormula = formula
-      .replace(/\s+/g, "")
-      .replace(
-        /(^|[^a-zA-Z])([a-z])/g,
-        (match: any, p1: any, p2: any) => p1 + p2.toUpperCase()
-      );
-    const regex = /([A-Z][a-z]*)(\d*)/g;
 
     if (formula === "") {
       setErrorMessage("Please enter an element symbol or a formula.");
       return;
     }
 
-    let formulaOutput;
-    while ((formulaOutput = regex.exec(formattedFormula)) !== null) {
-      const elementSymbolUser = formulaOutput[1];
-      const elementCount = parseInt(formulaOutput[2] || "1", 10);
-      const elementSymbol = elementsData.find(
-        (i) => i.symbol === elementSymbolUser
+    const formattedFormula = formula
+      .replace(/\s+/g, "")
+      .replace(
+        /(^|[^a-zA-Z])([a-z])/g,
+        (match, p1, p2) => p1 + p2.toUpperCase()
       );
 
-      if (elementSymbol) {
-        totalMolarMass += elementSymbol.molarMass * elementCount;
-      } else {
-        alert(
-          `The element with the symbol "${elementSymbolUser}" was not found in the periodic table`
-        );
-        return;
+    try {
+      totalMolarMass = calculateFromFormula(formattedFormula);
+      const formattedMolarMass = `The molar mass of ${formatWithSub(
+        formattedFormula
+      )} is: ${totalMolarMass.toFixed(2)} g/mol`;
+      setMolarMass(formattedMolarMass);
+      setErrorMessage("");
+    } catch (error: any) {
+      setErrorMessage(error.message);
+    }
+  };
+
+  const formatWithSub = (str: string) => {
+    return str.replace(/(\d+)/g, "<sub>$1</sub>");
+  };
+
+  const calculateFromFormula = (formula: string): number => {
+    const stack: { element: string; count: number }[] = [];
+    let currentElement = "";
+    let currentCount = "";
+    const length = formula.length;
+
+    for (let i = 0; i < length; i++) {
+      const char = formula[i];
+
+      if (/[A-Z]/.test(char)) {
+        if (currentElement) {
+          stack.push({
+            element: currentElement,
+            count: currentCount ? parseInt(currentCount, 10) : 1,
+          });
+          currentElement = "";
+          currentCount = "";
+        }
+        currentElement += char;
+      } else if (/[a-z]/.test(char)) {
+        currentElement += char;
+      } else if (/\d/.test(char)) {
+        currentCount += char;
+      } else if (char === "(" || char === "[") {
+        if (currentElement) {
+          stack.push({
+            element: currentElement,
+            count: currentCount ? parseInt(currentCount, 10) : 1,
+          });
+          currentElement = "";
+          currentCount = "";
+        }
+        stack.push({ element: char, count: 1 });
+      } else if (char === ")" || char === "]") {
+        if (currentElement) {
+          stack.push({
+            element: currentElement,
+            count: currentCount ? parseInt(currentCount, 10) : 1,
+          });
+          currentElement = "";
+          currentCount = "";
+        }
+
+        const group: { element: string; count: number }[] = [];
+        while (stack.length > 0) {
+          const top = stack.pop();
+          if (top && (top.element === "(" || top.element === "[")) {
+            break;
+          }
+          if (top) {
+            group.push(top);
+          }
+        }
+
+        let groupMultiplier = "";
+        while (i + 1 < length && /\d/.test(formula[i + 1])) {
+          groupMultiplier += formula[++i];
+        }
+
+        const finalMultiplier = groupMultiplier
+          ? parseInt(groupMultiplier, 10)
+          : 1;
+
+        for (const item of group) {
+          stack.push({
+            element: item.element,
+            count: item.count * finalMultiplier,
+          });
+        }
       }
     }
 
-    setMolarMass(
-      `The molar mass of ${formattedFormula} is: ${totalMolarMass.toFixed(
-        2
-      )} g/mol`
-    );
-    setErrorMessage("");
-  };
-
-  const handleKeyUp = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      calculateMolarMass();
+    if (currentElement) {
+      stack.push({
+        element: currentElement,
+        count: currentCount ? parseInt(currentCount, 10) : 1,
+      });
     }
+
+    let totalMolarMass = 0;
+    while (stack.length > 0) {
+      const item = stack.pop();
+      if (item) {
+        const elementSymbol: ElementData | undefined = elementsData.find(
+          (i) => i.symbol === item.element
+        );
+        if (elementSymbol) {
+          totalMolarMass += elementSymbol.molarMass * item.count;
+        } else {
+          throw new Error(
+            `The element with the symbol "${item.element}" was not found in the periodic table`
+          );
+        }
+      }
+    }
+
+    return totalMolarMass;
   };
 
   return (
@@ -62,28 +204,26 @@ export default function MolarMassCalculator() {
       subtitulo="Instantly Calculate the Molar Mass"
     >
       <div className="flex flex-col gap-5 p-4 max-w-lg w-full">
-        <span>
-          <h1 className=" text-xl text-zinc-800">
-            Enter a Chemical Formula or Element Symbol
-          </h1>
-        </span>
-        <InputFormula
-          value={formula}
-          onChange={(e) => setFormula(e.target.value)}
-          onKeyUp={handleKeyUp}
-          placeholder="Ex: H₂O"
+        <h1 className="text-xl text-zinc-800">
+          Enter a Chemical Formula or Element Symbol
+        </h1>
+
+        <SubscriptInput
+          onChange={(val) => setFormula(val)}
+          onEnterPress={calculateMolarMass}
         />
+
         <div className="flex justify-center items-center">
           <button
             className="btn-calculate w-40 h-12"
             onClick={calculateMolarMass}
           >
-            <span className="text-2xl text-center ">Calculate</span>
+            <span className="text-2xl text-center">Calculate</span>
           </button>
         </div>
 
         <span className="flex justify-center items-center text-zinc-800 text-center text-2xl">
-          {molarMass && <div>{molarMass}</div>}
+          {molarMass && <div dangerouslySetInnerHTML={{ __html: molarMass }} />}
         </span>
         <span className="flex justify-center items-center text-zinc-800 text-center text-2xl">
           {errorMessage && <div className="error-message">{errorMessage}</div>}

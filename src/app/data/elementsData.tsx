@@ -1,13 +1,25 @@
 const elementsData = [
   // {
+  //   symbol: "lanthanides",
   //   atomicRange: "57 - 71",
-  //   displayText: "lanthanides",
+  //   name: "lanthanides",
   //   row: 6,
   //   column: 3,
   // },
   // {
+  //   symbol: "actinides",
   //   atomicRange: "89 - 103",
-  //   displayText: "actinides",
+  //   name: "actinides",
+  //   row: 7,
+  //   column: 3,
+  // },
+  // {
+  //   symbol: "",
+  //   name: "",
+  //   atomicNumber: "",
+  //   molarMass: 0,
+  //   group: 1,
+  //   period: 1,
   //   row: 7,
   //   column: 3,
   // },
@@ -21,6 +33,7 @@ const elementsData = [
     period: 1,
     row: 1,
     column: 1,
+    showColummNumber: true,
   },
   {
     symbol: "He",
