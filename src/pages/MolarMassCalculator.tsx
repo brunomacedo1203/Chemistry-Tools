@@ -85,6 +85,7 @@ export default function MolarMassCalculator() {
 
     try {
       totalMolarMass = calculateFromFormula(formattedFormula);
+      // Format the formula result with subscripts
       const formattedMolarMass = `The molar mass of ${formatWithSub(
         formattedFormula
       )} is: ${totalMolarMass.toFixed(2)} g/mol`;
