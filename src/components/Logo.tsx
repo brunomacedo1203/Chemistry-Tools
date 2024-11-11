@@ -1,23 +1,50 @@
-import { IconBrandReact, IconTestPipe, IconTools } from "@tabler/icons-react";
+import { IconTools } from "@tabler/icons-react";
 import Link from "next/link";
+import {
+  IconLayoutSidebarLeftCollapseFilled,
+  IconLayoutSidebarRightCollapseFilled,
+} from "@tabler/icons-react";
 
-export default function Logo() {
+interface LogoProps {
+  collapsed: boolean;
+  setCollapsed: (collapsed: boolean) => void;
+}
+
+export default function Logo({ collapsed, setCollapsed }: LogoProps) {
   return (
-    <Link
-      href="/"
-      className={` 
-        flex items-center font-black gap-2.5 
-        px-5 h-16  border-zinc-400 shadow-md`}
-    >
-      <span
-        className="text-lm font-black text-2xl 
-                    bg-gradient-to-r from-blue-600 to-green-600 text-transparent bg-clip-text"
+    <div className="flex items-center justify-between px-5 h-16 border-b border-zinc-400 shadow-md">
+      <button
+        className="text-xl p-0 rounded-md "
+        onClick={() => setCollapsed(!collapsed)}
       >
-        Chemistry Tools
-      </span>
-      <span>
-        <IconTools size={40} stroke={1} color="black" />
-      </span>
-    </Link>
+        {collapsed ? (
+          <IconLayoutSidebarRightCollapseFilled
+            size={30}
+            stroke={1}
+            color="black"
+          />
+        ) : (
+          <IconLayoutSidebarLeftCollapseFilled
+            size={30}
+            stroke={1}
+            color="black"
+          />
+        )}
+      </button>
+
+      <Link href="/" className="flex items-center gap-2.5">
+        <span
+          className={`text-lm font-black text-xl ${
+            collapsed ? "hidden" : "block"
+          } bg-gradient-to-r from-blue-600 to-green-600 text-transparent bg-clip-text`}
+        >
+          Chemistry Tools
+        </span>
+
+        <span className={`${collapsed ? "hidden" : "block"}`}>
+          <IconTools size={3} stroke={1} color="black" />
+        </span>
+      </Link>
+    </div>
   );
 }

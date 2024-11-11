@@ -1,97 +1,104 @@
 import {
   IconCalculator,
-  IconCode,
-  IconForms,
   IconHospital,
-  IconNumbers,
   IconPlayCardA,
   IconRulerMeasure,
   IconScale,
 } from "@tabler/icons-react";
 import MenuItem from "./MenuItem";
 
-export default function Menu() {
+interface MenuProps {
+  collapsed: boolean;
+}
+
+export default function Menu({ collapsed }: MenuProps) {
   return (
     <div
       className={`
-        
-        text-3xl  p-2 gap-2
-        flex flex-col justify-start items-center w-70 
+        text-3xl p-2 gap-2
+        flex flex-col justify-start items-center
+        ${collapsed ? "w-16" : "w-70"} 
         text-zinc-900 
-        `}
+      `}
     >
       <MenuItem
         icone={<IconHospital />}
-        label="Periodic Table"
+        label={collapsed ? "" : "Periodic Table"}
         url="/PeriodicTable"
       />
 
-      <span className=" text-sm text-zinc-500 self-start pl-3 pt-1">
-        Calculators
-      </span>
-      <MenuItem
-        icone={<IconCalculator />}
-        label="Basic Calculator"
-        url="/componente/basico"
-      />
+      {!collapsed && (
+        <span className="text-sm text-zinc-500 self-start pl-3 pt-1">
+          Calculators
+        </span>
+      )}
 
       <MenuItem
         icone={<IconScale />}
-        label="Molar Mass calculator"
+        label={collapsed ? "" : "Molar Mass calculator"}
         url="/MolarMassCalculator"
       />
+      <MenuItem
+        icone={<IconCalculator />}
+        label={collapsed ? "" : "Basic Calculator"}
+        url="/componente/basico"
+      />
 
-      <span className=" text-sm text-zinc-500 self-start pl-3 pt-1">
-        Unit Converters
-      </span>
+      {!collapsed && (
+        <span className="text-sm text-zinc-500 self-start pl-3 pt-1">
+          Unit Converters
+        </span>
+      )}
       <MenuItem
         icone={<IconRulerMeasure />}
-        label="Mass"
+        label={collapsed ? "" : "Mass"}
         url="/componente/titulo"
       />
       <MenuItem
         icone={<IconRulerMeasure />}
-        label="Volum"
+        label={collapsed ? "" : "Volume"}
         url="/componente/titulo"
       />
 
-      <span className=" text-sm text-zinc-500 self-start pl-3 pt-1">
-        Flash Cards
-      </span>
-
+      {!collapsed && (
+        <span className="text-sm text-zinc-500 self-start pl-3 pt-1">
+          Flash Cards
+        </span>
+      )}
       <MenuItem
         icone={<IconPlayCardA />}
-        label="Flashcards"
+        label={collapsed ? "" : "Flashcards"}
         url="/flashcards"
       />
 
-      <span className=" text-sm text-zinc-500 self-start pl-3 pt-1">
-        Exercícios do curso
-      </span>
-
+      {/* {!collapsed && (
+        <span className="text-sm text-zinc-500 self-start pl-3 pt-1">
+          Exercícios do curso
+        </span>
+      )}
       <MenuItem
         icone={<IconNumbers />}
-        label="Contador"
+        label={collapsed ? "" : "Contador"}
         url="/estado_exercicios/contador"
       />
 
       <MenuItem
         icone={<IconCode />}
-        label="Componente com estado"
+        label={collapsed ? "" : "Componente com estado"}
         url="/estado_exercicios/com"
       />
 
       <MenuItem
         icone={<IconForms />}
-        label="Campo de texto"
+        label={collapsed ? "" : "Campo de texto"}
         url="/estado_exercicios/campoTexto"
       />
 
       <MenuItem
         icone={<IconCalculator />}
-        label="Calculadora"
+        label={collapsed ? "" : "Calculadora"}
         url="/estado_exercicios/calculadora"
-      />
+      /> */}
     </div>
   );
 }
