@@ -1,29 +1,4 @@
 const elementsData = [
-  // {
-  //   symbol: "lanthanides",
-  //   atomicRange: "57 - 71",
-  //   name: "lanthanides",
-  //   row: 6,
-  //   column: 3,
-  // },
-  // {
-  //   symbol: "actinides",
-  //   atomicRange: "89 - 103",
-  //   name: "actinides",
-  //   row: 7,
-  //   column: 3,
-  // },
-  // {
-  //   symbol: "",
-  //   name: "",
-  //   atomicNumber: "",
-  //   molarMass: 0,
-  //   group: 1,
-  //   period: 1,
-  //   row: 7,
-  //   column: 3,
-  // },
-
   {
     symbol: "H",
     name: "Hydrogen",
@@ -33,7 +8,7 @@ const elementsData = [
     period: 1,
     row: 1,
     column: 1,
-    showColummNumber: true,
+    showColummNumber: 1,
   },
   {
     symbol: "He",
@@ -65,6 +40,7 @@ const elementsData = [
     period: 2,
     row: 2,
     column: 2,
+    showColummNumber: 2,
   },
   {
     symbol: "B",
