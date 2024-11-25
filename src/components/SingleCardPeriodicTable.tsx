@@ -1,8 +1,8 @@
 interface SingleCardPeriodicTableProps {
   atomicNumber: number;
   symbol: string;
-  name?: string;
-  molarMass?: number;
+  name: string;
+  molarMass: number;
   showColummNumber?: number;
 }
 
@@ -15,11 +15,14 @@ export default function SingleCardPeriodicTable({
 }: SingleCardPeriodicTableProps) {
   console.log(showColummNumber);
 
+  const columnNumberClass = showColummNumber
+    ? "before:top-[-45px] before:left-[35px] before:absolute before:text-cyan-600 before:content-[attr(data-columm-number)]"
+    : "";
+
   return (
     <div
-      className={`
-    before:top-[-45px] before:absolute before:text-cyan-600 before:content-['2'] 
-    relative w-18 h-18 border-2 border-black items-center justify-center bg-gray-100`}
+      data-columm-number={showColummNumber}
+      className={`${columnNumberClass} relative w-18 h-18 border-2 border-black items-center justify-center bg-gray-100`}
     >
       <span className="absolute top-1 left-1 text-black text-xs font-bold ">
         {atomicNumber}

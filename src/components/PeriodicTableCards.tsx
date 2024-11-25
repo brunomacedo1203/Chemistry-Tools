@@ -23,6 +23,7 @@ export default function PeriodicTableCards() {
             symbol={e.symbol}
             name={e.name}
             molarMass={e.molarMass}
+            showColummNumber={e.showColummNumber}
           />
         </div>
       ))}
