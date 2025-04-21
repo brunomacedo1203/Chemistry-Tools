@@ -1,14 +1,14 @@
-import Pagina from "@/components/Pagina";
+import Page from "@/components/Page";
 
-export default function Page() {
+export default function FundamentalsPage() {
   return (
-    <Pagina titulo="Chemistry Tolls" subtitulo="All you need in one place!">
+    <Page title="Chemistry Tools" subtitle="All you need in one place!">
       <ul className="list-disc  pl-8">
         <li>Ana</li>
         <li>Gustavo</li>
-        <li>Rebeca</li>
+        <li>João</li>
         <li>Zico</li>
       </ul>
-    </Pagina>
+    </Page>
   );
 }

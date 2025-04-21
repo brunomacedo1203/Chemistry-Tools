@@ -1,11 +1,11 @@
-import Pagina from "@/components/Pagina";
-import { useState } from "react";
+import React, { useState } from "react";
+import Page from "@/components/Page";
 
-export default function PaginaCalculadora() {
+export default function CalculatorPage() {
   const [numero1, setNumero1] = useState(0);
   const [numero2, setNumero2] = useState(0);
   return (
-    <Pagina titulo={"Calculadora"} subtitulo={"Capitulo Estado"}>
+    <Page title="Calculator" subtitle="State Chapter">
       <div className=" flex flex-col gap-5">
         <div className="flex gap-5">
           <input
@@ -31,6 +31,6 @@ export default function PaginaCalculadora() {
           </span>
         </div>
       </div>
-    </Pagina>
+    </Page>
   );
 }

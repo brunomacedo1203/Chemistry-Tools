@@ -1,10 +1,10 @@
-interface ConteudoProps {
-  titulo: string;
-  cor?: string;
+interface ContentProps {
+  title: string;
+  color?: string;
   children?: React.ReactNode;
 }
 
-export default function Conteudo(props: ConteudoProps) {
+export default function Content(props: ContentProps) {
   return (
     <div
       className={`

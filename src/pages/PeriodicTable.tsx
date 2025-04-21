@@ -1,10 +1,10 @@
-import Pagina from "@/components/Pagina";
+import Page from "@/components/Page";
 import PeriodicTableCards from "../modules/chemistry/components/PeriodicTableCards";
 
 export default function PeriodicTable() {
   return (
-    <Pagina titulo={"Periodic Table of Elements"} subtitulo={""}>
+    <Page title={"Periodic Table of Elements"} subtitle={""}>
       <PeriodicTableCards></PeriodicTableCards>
-    </Pagina>
+    </Page>
   );
 }

@@ -1,4 +1,4 @@
-import Pagina from "@/components/Pagina";
+import Page from "@/components/Page";
 import { useState, useRef } from "react";
 import elementsData from "../modules/chemistry/services/elementsData";
 
@@ -200,10 +200,7 @@ export default function MolarMassCalculator() {
   };
 
   return (
-    <Pagina
-      titulo="Enter a Chemical Formula or Element Symbol"
-      subtitulo="Instantly Calculate the Molar Mass"
-    >
+    <Page title="Molar Mass Calculator" subtitle="Calculate the molar mass of compounds.">
       <div className="flex flex-col gap-5 p-4 max-w-lg w-full">
         <h1 className="text-xl text-zinc-800">
           Enter a Chemical Formula or Element Symbol
@@ -230,6 +227,6 @@ export default function MolarMassCalculator() {
           {errorMessage && <div className="error-message">{errorMessage}</div>}
         </span>
       </div>
-    </Pagina>
+    </Page>
   );
 }

@@ -5,31 +5,31 @@ import Logo from "./Logo";
 import Menu from "./Menu";
 import {} from "@tabler/icons-react";
 
-// Definindo os tipos de propriedades aceitas
-interface AreaLateralProps {
-  titulo: string;
-  cor: string;
+// Defining the types of properties accepted
+interface SideAreaProps {
+  title: string;
+  color: string;
   children: React.ReactNode;
 }
 
-export default function AreaLateral({
-  titulo,
-  cor,
+export default function SideArea({
+  title,
+  color,
   children,
-}: AreaLateralProps) {
+}: SideAreaProps) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div
+    <aside
       className={`flex flex-col gap-5 custom-shadow mr-2 transition-width duration-300 ${
         collapsed ? "w-16" : "w-70"
       }`}
-      style={{ backgroundColor: cor }}
+      style={{ backgroundColor: color }}
     >
       <Logo setCollapsed={setCollapsed} collapsed={collapsed} />
       <Menu collapsed={collapsed} />
-      <h1>{titulo}</h1>
+      <h1>{title}</h1>
       <div>{children}</div>
-    </div>
+    </aside>
   );
 }

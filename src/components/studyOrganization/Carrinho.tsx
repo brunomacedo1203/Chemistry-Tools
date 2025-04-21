@@ -1,10 +1,10 @@
-import Conteudo from "../Conteudo";
+import Content from "../Content";
 import EmptyTopic from "./EmptyTopic";
 
 export default function Carrinho() {
   return (
-    <Conteudo titulo="Carrinho" cor="green">
+    <Content title="Cart" color="green">
       <EmptyTopic />
-    </Conteudo>
+    </Content>
   );
 }

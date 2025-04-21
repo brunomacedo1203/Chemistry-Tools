@@ -1,12 +1,12 @@
-import Pagina from "@/components/Pagina";
+import Page from "@/components/Page";
 import { IconBrandReact } from "@tabler/icons-react";
 
 export default function Home() {
   return (
     <div>
-      <Pagina
-        titulo="Fundamentos de React"
-        subtitulo="Bem vindo ao mundo do React"
+      <Page
+        title="Home"
+        subtitle="Welcome to Chemistry Tools!"
       >
         <div className="flex flex-col justify-center items-center h-full w-full text-zinc-500">
           <IconBrandReact size={200} stroke={1} />
@@ -17,7 +17,7 @@ export default function Home() {
             Here, you will find everything you need to practice chemistry
           </span>
         </div>
-      </Pagina>
+      </Page>
     </div>
   );
 }
