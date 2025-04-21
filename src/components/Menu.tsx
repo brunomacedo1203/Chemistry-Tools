@@ -1,9 +1,9 @@
 import {
   IconCalculator,
   IconHospital,
-  IconPlayCardA,
   IconRulerMeasure,
   IconScale,
+  IconSitemap,
 } from "@tabler/icons-react";
 import MenuItem from "./MenuItem";
 
@@ -62,13 +62,13 @@ export default function Menu({ collapsed }: MenuProps) {
 
       {!collapsed && (
         <span className="text-sm text-zinc-500 self-start pl-3 pt-1">
-          Flash Cards
+          Study Organization
         </span>
       )}
       <MenuItem
-        icone={<IconPlayCardA />}
-        label={collapsed ? "" : "Flashcards"}
-        url="/flashcards"
+        icone={<IconSitemap />}
+        label={collapsed ? "" : "Study Organization"}
+        url="/studyOrganization"
       />
 
       {/* {!collapsed && (

@@ -19,6 +19,7 @@ const elementsData = [
     period: 1,
     row: 1,
     column: 18,
+    showColummNumber: 18,
   },
 
   {
@@ -51,6 +52,7 @@ const elementsData = [
     period: 2,
     row: 2,
     column: 13,
+    showColummNumber: 13,
   },
   {
     symbol: "C",
@@ -61,6 +63,7 @@ const elementsData = [
     period: 2,
     row: 2,
     column: 14,
+    showColummNumber: 14,
   },
   {
     symbol: "N",
@@ -71,6 +74,7 @@ const elementsData = [
     period: 2,
     row: 2,
     column: 15,
+    showColummNumber: 15,
   },
   {
     symbol: "O",
@@ -81,6 +85,7 @@ const elementsData = [
     period: 2,
     row: 2,
     column: 16,
+    showColummNumber: 16,
   },
   {
     symbol: "F",
@@ -91,6 +96,7 @@ const elementsData = [
     period: 2,
     row: 2,
     column: 17,
+    showColummNumber: 17,
   },
   {
     symbol: "Ne",
@@ -213,6 +219,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 3,
+    showColummNumber: 3,
   },
   {
     symbol: "Ti",
@@ -223,6 +230,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 4,
+    showColummNumber: 4,
   },
   {
     symbol: "V",
@@ -233,6 +241,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 5,
+    showColummNumber: 5,
   },
   {
     symbol: "Cr",
@@ -243,6 +252,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 6,
+    showColummNumber: 6,
   },
   {
     symbol: "Mn",
@@ -253,6 +263,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 7,
+    showColummNumber: 7,
   },
   {
     symbol: "Fe",
@@ -263,6 +274,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 8,
+    showColummNumber: 8,
   },
   {
     symbol: "Co",
@@ -273,6 +285,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 9,
+    showColummNumber: 9,
   },
   {
     symbol: "Ni",
@@ -283,6 +296,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 10,
+    showColummNumber: 10,
   },
   {
     symbol: "Cu",
@@ -293,6 +307,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 11,
+    showColummNumber: 11,
   },
   {
     symbol: "Zn",
@@ -303,6 +318,7 @@ const elementsData = [
     period: 4,
     row: 4,
     column: 12,
+    showColummNumber: 12,
   },
   {
     symbol: "Ga",

@@ -5,7 +5,18 @@ import Logo from "./Logo";
 import Menu from "./Menu";
 import {} from "@tabler/icons-react";
 
-export default function AreaLateral() {
+// Definindo os tipos de propriedades aceitas
+interface AreaLateralProps {
+  titulo: string;
+  cor: string;
+  children: React.ReactNode;
+}
+
+export default function AreaLateral({
+  titulo,
+  cor,
+  children,
+}: AreaLateralProps) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -13,10 +24,12 @@ export default function AreaLateral() {
       className={`flex flex-col gap-5 custom-shadow mr-2 transition-width duration-300 ${
         collapsed ? "w-16" : "w-70"
       }`}
+      style={{ backgroundColor: cor }}
     >
       <Logo setCollapsed={setCollapsed} collapsed={collapsed} />
-
       <Menu collapsed={collapsed} />
+      <h1>{titulo}</h1>
+      <div>{children}</div>
     </div>
   );
 }
