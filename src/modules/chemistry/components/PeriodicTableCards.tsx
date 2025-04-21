@@ -1,5 +1,5 @@
 import SingleCardPeriodicTable from "./SingleCardPeriodicTable";
-import elementsData from "@/app/data/elementsData";
+import elementsData from "../services/elementsData";
 
 export default function PeriodicTableCards() {
   return (

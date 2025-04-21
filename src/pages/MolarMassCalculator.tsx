@@ -1,6 +1,6 @@
 import Pagina from "@/components/Pagina";
 import { useState, useRef } from "react";
-import elementsData from "@/app/data/elementsData";
+import elementsData from "../modules/chemistry/services/elementsData";
 
 interface ElementData {
   symbol: string;

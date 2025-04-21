@@ -1,5 +1,5 @@
 import Pagina from "@/components/Pagina";
-import PeriodicTableCards from "@/components/PeriodicTableCards";
+import PeriodicTableCards from "../modules/chemistry/components/PeriodicTableCards";
 
 export default function PeriodicTable() {
   return (
